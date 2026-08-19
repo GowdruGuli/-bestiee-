@@ -1,285 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Just For You 💛</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <title>Just For You 💛</title>
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #fff4d6, #ffe4ee);
-    overflow-x: hidden;
-}
+    <style>
 
-.card {
-    width: 100%;
-    max-width: 620px;
-    background: rgba(255,255,255,0.94);
-    padding: 45px 30px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.flower {
-    font-size: 60px;
-    animation: float 2s ease-in-out infinite;
-}
+        body {
+            margin: 0;
+            min-height: 100vh;
 
-.small {
-    color: #999;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-h1 {
-    font-size: 38px;
-    line-height: 1.15;
-    margin: 15px 0 20px;
-}
+            padding: 20px;
 
-.message {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #665866;
-}
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
 
-.question {
-    margin-top: 30px;
-    font-size: 21px;
-    font-weight: 700;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff4d6,
+                    #ffe4ee
+                );
 
-.buttons {
-    min-height: 150px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-}
+            overflow-x: hidden;
+        }
 
-button {
-    border: none;
-    border-radius: 50px;
-    padding: 15px 28px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
 
-#yes {
-    background: #ffd34e;
-    color: #352900;
-    box-shadow: 0 8px 25px rgba(255, 200, 40, 0.4);
-}
+        .card {
+            width: 100%;
+            max-width: 620px;
 
-#no {
-    background: #eeeeee;
-    color: #555;
-}
+            background:
+                rgba(255, 255, 255, 0.95);
 
-#reaction {
-    min-height: 30px;
-    font-weight: 700;
-    color: #885f70;
-}
+            padding: 45px 30px;
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
+            border-radius: 30px;
 
-    50% {
-        transform: translateY(-10px);
-    }
-}
+            text-align: center;
 
-@media (max-width: 600px) {
-    .card {
-        padding: 35px 20px;
-    }
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.12);
+        }
 
-    h1 {
-        font-size: 30px;
-    }
 
-    .message {
-        font-size: 17px;
-    }
-}
-</style>
+        .flower {
+            font-size: 60px;
+
+            animation:
+                float 2s
+                ease-in-out
+                infinite;
+        }
+
+
+        .small {
+            color: #999;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-top: 15px;
+        }
+
+
+        h1 {
+            font-size: 40px;
+
+            line-height: 1.15;
+
+            margin:
+                15px 0
+                22px;
+        }
+
+
+        .message {
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #665866;
+        }
+
+
+        .question {
+            margin-top: 32px;
+
+            font-size: 21px;
+
+            font-weight: 700;
+        }
+
+
+        .buttons {
+            min-height: 170px;
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+
+        button {
+            border: none;
+
+            border-radius: 50px;
+
+            padding:
+                15px 30px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                padding 0.25s ease,
+                font-size 0.25s ease;
+        }
+
+
+        #yes {
+            background: #ffd34e;
+
+            color: #352900;
+
+            box-shadow:
+                0 8px 25px
+                rgba(255, 200, 40, 0.4);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        #no {
+            background: #eeeeee;
+
+            color: #555;
+        }
+
+
+        #reaction {
+            min-height: 35px;
+
+            margin-top: 15px;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            color: #885f70;
+        }
+
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding:
+                    35px 20px;
+            }
+
+            h1 {
+                font-size: 31px;
+            }
+
+            .message {
+                font-size: 17px;
+            }
+
+            .question {
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
 <div class="card" id="card">
 
-    <div class="flower">🌷</div>
 
-    <p class="small">A little message for you</p>
+    <div class="flower">
+        🌷
+    </div>
+
+
+    <p class="small">
+        A LITTLE MESSAGE FOR YOU
+    </p>
+
 
     <h1>
-        You know you've got a place in my heart, right? 💛
+        Hey baby girl 💛
     </h1>
 
+
     <p class="message">
-        Not in some dramatic girlfriend-boyfriend way 😂
-        <br><br>
 
-        I just genuinely like you as a person.
+        I just wanted to tell you something.
 
         <br><br>
 
-        I value our friendship, I enjoy having you in my life,
-        and somewhere along the way you've become one of those
-        people I'll always have a little place for in my heart.
+        I genuinely like you as a person,
+        and I'm really glad that somehow
+        our paths crossed.
 
         <br><br>
 
-        Whatever happens and wherever life takes us,
-        I hope you know that. 🌷
+        I value our friendship and
+        I love having you in my life.
+
+        <br><br>
+
+        Somewhere along the way,
+        without even realising it,
+        you became someone who
+        means a lot to me.
+
+        <br><br>
+
+        Whatever happens,
+        wherever life takes us,
+        and no matter how much
+        things change...
+
+        <br><br>
+
+        you've got a little place
+        in my heart that will
+        always be yours. 💛
+
+        <br><br>
+
+        Nothing complicated.
+        Nothing expected from you.
+
+        <br><br>
+
+        I just wanted you to know that.
+
     </p>
+
 
     <p class="question">
-        So... will you accept your permanent little spot? 😂
+
+        So... will you accept
+        your permanent little spot? 🌷
+
     </p>
+
 
     <div class="buttons">
 
+
         <button id="yes">
+
             Yes 💛
+
         </button>
 
+
         <button id="no">
-            No 🙄
+
+            No
+
         </button>
+
 
     </div>
 
+
     <p id="reaction"></p>
+
 
 </div>
 
+
+
 <script>
 
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-const reaction = document.getElementById("reaction");
-const card = document.getElementById("card");
+
+const yes =
+    document.getElementById("yes");
+
+
+const no =
+    document.getElementById("no");
+
+
+const reaction =
+    document.getElementById("reaction");
+
+
+const card =
+    document.getElementById("card");
+
 
 let count = 0;
 
+
+
 const messages = [
-    "Hmm... are you sure? 👀",
-    "Think about it one more time 😂",
-    "Why do you keep pressing that button 😭",
-    "Look how nice the Yes button looks now 😌",
-    "You're really committed to saying no huh 😂",
-    "Okay this is getting personal now 😭",
-    "Just press YES already 😂💛"
+
+    "Are you sure? 👀",
+
+    "Think about it one more time...",
+
+    "Why do you keep pressing No? 🥲",
+
+    "The Yes button is getting difficult to ignore now.",
+
+    "Baby girl... seriously? 🥺",
+
+    "I'm not giving up that easily 💛",
+
+    "You know which one you're supposed to press 🌷"
+
 ];
 
-no.addEventListener("click", function() {
 
-    count++;
 
-    let size = 1 + (count * 0.30);
+no.addEventListener(
+    "click",
+    function () {
 
-    if (size > 3.5) {
-        size = 3.5;
+
+        count++;
+
+
+        let size =
+            1 + (count * 0.30);
+
+
+        if (size > 3.5) {
+
+            size = 3.5;
+
+        }
+
+
+        yes.style.transform =
+            "scale(" + size + ")";
+
+
+        let messageNumber =
+            Math.min(
+                count - 1,
+                messages.length - 1
+            );
+
+
+        reaction.innerText =
+            messages[messageNumber];
+
+
+        if (count === 3) {
+
+            no.innerText =
+                "Are you sure? 🥲";
+
+        }
+
+
+        if (count === 5) {
+
+            no.innerText =
+                "Still No? 🥺";
+
+        }
+
+
+        if (count >= 7) {
+
+            no.innerText =
+                "One last chance 💛";
+
+        }
+
     }
+);
 
-    yes.style.transform = "scale(" + size + ")";
 
-    let messageNumber = Math.min(
-        count - 1,
-        messages.length - 1
-    );
 
-    reaction.innerText = messages[messageNumber];
+yes.addEventListener(
+    "click",
+    function () {
 
-    if (count === 3) {
-        no.innerText = "Really? 😭";
+
+        card.innerHTML = `
+
+
+            <div class="flower">
+
+                💛
+
+            </div>
+
+
+            <p class="small">
+
+                OFFICIALLY CONFIRMED
+
+            </p>
+
+
+            <h1>
+
+                I knew you'd say yes,
+                baby girl 💛
+
+            </h1>
+
+
+            <p class="message">
+
+
+                That's all I wanted
+                you to know.
+
+                <br><br>
+
+
+                I'm genuinely grateful
+                that you're in my life.
+
+                <br><br>
+
+
+                I don't know where
+                life will take either of us,
+
+                <br><br>
+
+                but you'll always be
+                someone I'm happy I met.
+
+                <br><br>
+
+
+                No expectations.
+
+                <br>
+
+                No pressure.
+
+                <br><br>
+
+
+                Just a little reminder
+                that you mean something
+                to me.
+
+                <br><br>
+
+
+                Your little place
+                in my heart is
+                officially permanent.
+
+                <br><br>
+
+                🌷💛
+
+
+            </p>
+
+
+        `;
+
     }
+);
 
-    if (count === 5) {
-        no.innerText = "Still NO?! 😂";
-    }
-
-    if (count >= 7) {
-        no.innerText = "You're impossible 😭";
-    }
-
-});
-
-
-yes.addEventListener("click", function() {
-
-    card.innerHTML = `
-
-        <div class="flower">
-            💛
-        </div>
-
-        <p class="small">
-            OFFICIALLY CONFIRMED
-        </p>
-
-        <h1>
-            Permanent spot accepted 😂
-        </h1>
-
-        <p class="message">
-
-            That's literally all I wanted to say.
-
-            <br><br>
-
-            I'm genuinely glad you're in my life.
-
-            <br><br>
-
-            I don't know where life will take either of us,
-            but you'll always be someone I'm happy I met.
-
-            <br><br>
-
-            No dramatic speech.<br>
-            No pressure.<br>
-            No weirdness. 😂
-
-            <br><br>
-
-            Just appreciation for a person
-            who means something to me.
-
-            <br><br>
-
-            Now you can't give the spot back. 😂💛
-
-        </p>
-
-    `;
-
-});
 
 </script>
 
+
 </body>
+
 </html>
