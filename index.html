@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,102 +7,100 @@
 <title>Just For You 💛</title>
 
 <style>
-
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
+    padding: 25px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
 
-    font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-    background: linear-gradient(
-        135deg,
-        #fff4d6,
-        #ffe4ee
-    );
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,224,120,.35), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255,190,210,.35), transparent 30%),
+        linear-gradient(135deg, #fff5d8, #ffe6ef);
 
     color: #302630;
+    overflow-x: hidden;
 }
 
+/* ==============================
+   MAIN CARD
+============================== */
+
 .card {
+    position: relative;
     width: 100%;
     max-width: 650px;
 
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,.96);
 
-    padding: 45px 35px;
+    padding: 45px 38px;
 
     border-radius: 30px;
 
     text-align: center;
 
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.12);
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+
+    z-index: 20;
+
+    transition: all .5s ease;
 }
 
 .flower {
-    font-size: 60px;
-
-    animation:
-        float 2s
-        ease-in-out
-        infinite;
+    font-size: 55px;
+    animation: float 2s ease-in-out infinite;
 }
 
 .small {
     color: #999;
-
     font-size: 12px;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
     margin-top: 15px;
 }
 
 h1 {
     font-size: 40px;
-
     line-height: 1.2;
-
     margin: 15px 0 25px;
 }
 
 .message {
     font-size: 18px;
-
     line-height: 1.8;
-
     color: #665866;
 }
 
 .question {
     margin-top: 32px;
-
-    font-size: 21px;
-
-    font-weight: 700;
+    font-size: 23px;
+    font-weight: 750;
 }
 
-.buttons {
-    min-height: 170px;
+/* ==============================
+   BUTTONS
+============================== */
 
-    margin-top: 20px;
+.buttons {
+    min-height: 160px;
+
+    margin-top: 15px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     gap: 18px;
@@ -113,52 +110,53 @@ h1 {
 
 button {
     border: none;
-
     border-radius: 50px;
 
-    padding: 15px 30px;
+    padding: 15px 32px;
 
     font-size: 18px;
-
     font-weight: bold;
 
     cursor: pointer;
 
     transition:
-        transform 0.25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 #yes {
     background: #ffd34e;
-
     color: #352900;
 
-    box-shadow:
-        0 8px 25px
-        rgba(255,200,40,0.4);
+    box-shadow: 0 8px 25px rgba(255,200,40,.4);
 
     position: relative;
+    z-index: 30;
+}
 
-    z-index: 2;
+#yes:hover {
+    box-shadow: 0 12px 30px rgba(255,200,40,.55);
 }
 
 #no {
     background: #eeeeee;
-
     color: #555;
 }
 
 #reaction {
     min-height: 35px;
 
-    margin-top: 15px;
+    margin-top: 10px;
 
     font-size: 17px;
-
     font-weight: 700;
 
     color: #885f70;
 }
+
+/* ==============================
+   FINAL MESSAGE
+============================== */
 
 .final-message {
     text-align: left;
@@ -168,36 +166,131 @@ button {
     margin: 0 auto;
 
     font-size: 17px;
-
     line-height: 1.9;
 
     color: #665866;
 }
 
 .final-message p {
-    margin-bottom: 22px;
+    margin-bottom: 23px;
 }
 
 .final-message .important {
     text-align: center;
 
-    font-size: 20px;
+    font-size: 21px;
 
     color: #3e313a;
 
-    font-weight: 600;
+    font-weight: 700;
 
-    margin: 30px 0;
+    margin: 35px 0;
 }
 
 .final-heart {
     text-align: center;
 
-    font-size: 35px;
+    font-size: 42px;
 
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
+/* ==============================
+   PHOTO LAYER
+============================== */
+
+#photoLayer {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    overflow: hidden;
+}
+
+/* POLAROID */
+
+.memory-photo {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 175px;
+    height: 205px;
+
+    object-fit: cover;
+
+    background: white;
+
+    padding: 7px 7px 24px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.05)
+        rotate(0deg);
+
+    transition:
+        left 1.15s cubic-bezier(.17,.89,.32,1.25),
+        top 1.15s cubic-bezier(.17,.89,.32,1.25),
+        transform 1.15s cubic-bezier(.17,.89,.32,1.25),
+        opacity .35s ease;
+}
+
+.memory-photo.show {
+    opacity: 1;
+}
+
+/* ==============================
+   HEART / FLOWER EXPLOSION
+============================== */
+
+.burst-heart {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    font-size: 30px;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    animation: heartBurst 1.5s ease-out forwards;
+}
+
+@keyframes heartBurst {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.4);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.8)
+            rotate(var(--r));
+    }
+}
 
 @keyframes float {
 
@@ -206,16 +299,33 @@ button {
     }
 
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-9px);
     }
-
 }
 
+/* ==============================
+   MOBILE
+============================== */
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
+
+    .memory-photo {
+        width: 125px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 14px;
+        align-items: flex-start;
+        padding-top: 25px;
+    }
 
     .card {
         padding: 35px 22px;
+        border-radius: 25px;
     }
 
     h1 {
@@ -223,40 +333,46 @@ button {
     }
 
     .message {
-        font-size: 17px;
+        font-size: 16px;
+    }
+
+    .question {
+        font-size: 20px;
     }
 
     .final-message {
         font-size: 16px;
+        line-height: 1.8;
     }
 
+    .memory-photo {
+        width: 92px;
+        height: 112px;
+        padding: 4px 4px 14px;
+    }
+
+    .memory-photo.show {
+        opacity: .38;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<div id="photoLayer"></div>
 
 <div class="card" id="card">
 
-
-    <div class="flower">
-        🌷
-    </div>
-
+    <div class="flower">🌷</div>
 
     <p class="small">
         A LITTLE MESSAGE FOR YOU
     </p>
 
-
     <h1>
         Hey baby girl 💛
     </h1>
-
 
     <p class="message">
 
@@ -288,320 +404,678 @@ button {
 
     </p>
 
-
     <p class="question">
-
-     Will you accept my friendship, bestiee? 🌷
-
+        Will you accept my friendship, bestiee? 🌷
     </p>
 
-
     <div class="buttons">
-
 
         <button id="yes">
             Yes 💛
         </button>
 
-
         <button id="no">
             No
         </button>
 
-
     </div>
-
 
     <p id="reaction"></p>
 
-
 </div>
-
-
 
 <script>
 
+/* ==============================
+   ELEMENTS
+============================== */
 
-const yes =
-    document.getElementById("yes");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const reaction = document.getElementById("reaction");
+const card = document.getElementById("card");
+const photoLayer = document.getElementById("photoLayer");
 
-
-const no =
-    document.getElementById("no");
-
-
-const reaction =
-    document.getElementById("reaction");
-
-
-const card =
-    document.getElementById("card");
+let noCount = 0;
 
 
-let count = 0;
+/* ==============================
+   YOUR 13 PHOTOS
+============================== */
+
+const photos = [
+
+    "IMG_9049.jpeg",
+    "IMG_9050.jpeg",
+    "IMG_9051.jpeg",
+    "IMG_9052.jpeg",
+    "IMG_9059.jpeg",
+    "IMG_9060.jpeg",
+    "IMG_9061.jpeg",
+    "IMG_9062.jpeg",
+    "IMG_9063.jpeg",
+    "IMG_9095.jpeg",
+    "IMG_9096.jpeg",
+    "IMG_9097.jpeg",
+    "IMG_9098.jpeg"
+
+];
 
 
+/* ==============================
+   NO BUTTON MESSAGES
+============================== */
 
-const messages = [
+const noMessages = [
 
     "Are you sure? 👀",
 
     "Think about it one more time...",
 
-    "Why do you keep pressing No? 🥲",
+    "Bestiee... why are you pressing No? 🥺",
 
-    "The Yes button is getting difficult to ignore now.",
+    "Look how big the Yes button is getting...",
 
     "Baby girl... seriously? 🥺",
 
     "I'm not giving up that easily 💛",
 
-    "You know which one you're supposed to press 🌷"
+    "Wrong button 👀",
+
+    "I think you meant Yes 💛",
+
+    "There's basically only one option now 🌷"
 
 ];
 
 
+/* ==============================
+   NO BUTTON
+============================== */
 
 no.addEventListener("click", function () {
 
-    count++;
+    noCount++;
 
+    let scale = 1 + (noCount * .32);
 
-    let size =
-        1 + (count * 0.30);
-
-
-    if (size > 3.5) {
-
-        size = 3.5;
-
+    if (scale > 4) {
+        scale = 4;
     }
-
 
     yes.style.transform =
-        "scale(" + size + ")";
+        "scale(" + scale + ")";
 
-
-    let messageNumber =
+    const messageIndex =
         Math.min(
-            count - 1,
-            messages.length - 1
+            noCount - 1,
+            noMessages.length - 1
         );
 
-
     reaction.innerText =
-        messages[messageNumber];
+        noMessages[messageIndex];
 
 
-    if (count === 3) {
-
-        no.innerText =
-            "Are you sure? 🥲";
-
+    if (noCount === 2) {
+        no.innerText = "Really? 👀";
     }
 
-
-    if (count === 5) {
-
-        no.innerText =
-            "Still No? 🥺";
-
+    if (noCount === 4) {
+        no.innerText = "Still No?";
     }
 
+    if (noCount === 6) {
+        no.innerText = "Wrong one";
+    }
 
-    if (count >= 7) {
-
-        no.innerText =
-            "One last chance 💛";
-
+    if (noCount >= 8) {
+        no.innerText = "Okay okay 😭";
     }
 
 });
 
 
+/* ==============================
+   HEART EXPLOSION
+============================== */
+
+function heartExplosion() {
+
+    const symbols = [
+        "💛",
+        "🌷",
+        "✨",
+        "💛",
+        "🌷"
+    ];
+
+    for (let i = 0; i < 40; i++) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "burst-heart";
+
+        heart.innerText =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    * symbols.length
+                )
+            ];
+
+        const angle =
+            Math.random()
+            * Math.PI
+            * 2;
+
+        const distance =
+            250
+            +
+            Math.random()
+            * 600;
+
+        const x =
+            Math.cos(angle)
+            * distance;
+
+        const y =
+            Math.sin(angle)
+            * distance;
+
+        heart.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+        heart.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+        heart.style.setProperty(
+            "--r",
+            (
+                Math.random()
+                * 720
+                - 360
+            )
+            + "deg"
+        );
+
+        document.body.appendChild(
+            heart
+        );
+
+        setTimeout(
+            () => heart.remove(),
+            1600
+        );
+    }
+}
+
+
+/* ==============================
+   PHOTO POSITIONS — DESKTOP
+============================== */
+
+const desktopPositions = [
+
+    {
+        left: "2%",
+        top: "4%",
+        rotate: "-11deg"
+    },
+
+    {
+        left: "3%",
+        top: "31%",
+        rotate: "8deg"
+    },
+
+    {
+        left: "2%",
+        top: "61%",
+        rotate: "-7deg"
+    },
+
+    {
+        left: "4%",
+        top: "79%",
+        rotate: "10deg"
+    },
+
+    {
+        left: "15%",
+        top: "9%",
+        rotate: "7deg"
+    },
+
+    {
+        left: "15%",
+        top: "72%",
+        rotate: "-10deg"
+    },
+
+    {
+        left: "87%",
+        top: "4%",
+        rotate: "10deg"
+    },
+
+    {
+        left: "86%",
+        top: "31%",
+        rotate: "-8deg"
+    },
+
+    {
+        left: "87%",
+        top: "60%",
+        rotate: "9deg"
+    },
+
+    {
+        left: "86%",
+        top: "79%",
+        rotate: "-10deg"
+    },
+
+    {
+        left: "73%",
+        top: "9%",
+        rotate: "-7deg"
+    },
+
+    {
+        left: "73%",
+        top: "72%",
+        rotate: "8deg"
+    },
+
+    {
+        left: "43%",
+        top: "82%",
+        rotate: "-5deg"
+    }
+
+];
+
+
+/* ==============================
+   PHOTO POSITIONS — MOBILE
+============================== */
+
+const mobilePositions = [
+
+    {
+        left: "-4%",
+        top: "3%",
+        rotate: "-12deg"
+    },
+
+    {
+        left: "78%",
+        top: "5%",
+        rotate: "10deg"
+    },
+
+    {
+        left: "-5%",
+        top: "19%",
+        rotate: "8deg"
+    },
+
+    {
+        left: "80%",
+        top: "22%",
+        rotate: "-9deg"
+    },
+
+    {
+        left: "-5%",
+        top: "37%",
+        rotate: "-8deg"
+    },
+
+    {
+        left: "80%",
+        top: "40%",
+        rotate: "8deg"
+    },
+
+    {
+        left: "-4%",
+        top: "55%",
+        rotate: "10deg"
+    },
+
+    {
+        left: "80%",
+        top: "58%",
+        rotate: "-10deg"
+    },
+
+    {
+        left: "-4%",
+        top: "72%",
+        rotate: "-7deg"
+    },
+
+    {
+        left: "80%",
+        top: "75%",
+        rotate: "9deg"
+    },
+
+    {
+        left: "-3%",
+        top: "88%",
+        rotate: "8deg"
+    },
+
+    {
+        left: "79%",
+        top: "89%",
+        rotate: "-8deg"
+    },
+
+    {
+        left: "40%",
+        top: "91%",
+        rotate: "4deg"
+    }
+
+];
+
+
+/* ==============================
+   PHOTO BURST
+============================== */
+
+function showPhotos() {
+
+    photoLayer.innerHTML = "";
+
+    const positions =
+        window.innerWidth <= 700
+        ? mobilePositions
+        : desktopPositions;
+
+    photos.forEach(
+        function(photo, index) {
+
+            const img =
+                document.createElement("img");
+
+            img.src = photo;
+
+            img.className =
+                "memory-photo";
+
+            img.alt =
+                "Our memory";
+
+            img.style.transitionDelay =
+                (index * .07)
+                + "s";
+
+            photoLayer.appendChild(img);
+
+            setTimeout(
+                function () {
+
+                    img.classList.add(
+                        "show"
+                    );
+
+                    img.style.left =
+                        positions[index].left;
+
+                    img.style.top =
+                        positions[index].top;
+
+                    img.style.transform =
+                        "translate(0,0) scale(1) rotate("
+                        +
+                        positions[index].rotate
+                        +
+                        ")";
+
+                },
+                100
+            );
+
+        }
+    );
+}
+
+
+/* ==============================
+   YES BUTTON
+============================== */
 
 yes.addEventListener("click", function () {
 
+    heartExplosion();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    showPhotos();
 
+    setTimeout(
+        function () {
 
-    card.innerHTML = `
+            yes.style.transform =
+                "scale(1)";
 
+            card.innerHTML = `
 
-        <div class="flower">
-            💛
-        </div>
+                <div class="flower">
+                    💛
+                </div>
 
+                <p class="small">
+                    OFFICIALLY CONFIRMED
+                </p>
 
-        <p class="small">
-            OFFICIALLY CONFIRMED
-        </p>
+                <h1>
+                    Permanent bestie spot accepted 💛
+                </h1>
 
+                <div class="final-message">
 
-        <h1>
-            I knew you'd say yes, baby girl 💛
-        </h1>
+                    <p>
+                        That's all I wanted you to know.
+                    </p>
 
+                    <p>
+                        I honestly don't know what you think
+                        about me or exactly how you see me,
+                        but there's something I really wanted
+                        you to know.
+                    </p>
 
-        <div class="final-message">
+                    <p>
+                        You are genuinely very special to me.
+                    </p>
 
+                    <p>
+                        I just like you so much as a person.
+                        Please don't take that in the wrong way.
+                        I'm not saying any of this because
+                        I expect something from you.
+                    </p>
 
-            <p>
-                That's all I wanted you to know.
-            </p>
+                    <p>
+                        I just genuinely feel like I found
+                        something very rare in my life when
+                        I became friends with you.
+                    </p>
 
+                    <p>
+                        I genuinely care about you.
+                        That's why I check on you,
+                        wonder if you're okay,
+                        and care about what's happening
+                        in your life.
+                    </p>
 
-            <p>
-                I honestly don't know what you think
-                about me or how you see me,
-                but I want you to know that
-                you're genuinely very special to me.
-            </p>
+                    <p>
+                        And I also wanted to tell you something
+                        about when you were in hospital.
+                    </p>
 
+                    <p>
+                        I really did want to come and see you.
+                        I was actually very sad knowing you
+                        were there and that I couldn't bring
+                        myself to come inside.
+                    </p>
 
-            <p>
-                I just like you so much as a person.
-                Please don't take that in the wrong way.
-                Having you in my life sometimes feels
-                like I found something really rare —
-                the kind of friendship and connection
-                you don't come across very often.
-            </p>
+                    <p>
+                        I have a really bad fear of hospitals.
+                        I've fainted in a hospital before
+                        back in India, and ever since then
+                        hospitals have genuinely scared me.
+                    </p>
 
+                    <p>
+                        So I'm sorry I wasn't there.
+                    </p>
 
-            <p>
-                I genuinely care about you.
-                That's why I'm always checking on you
-                and wondering if you're okay,
-                even if I don't always say it.
-            </p>
+                    <p>
+                        It wasn't because I didn't care.
+                        It was actually the complete opposite.
+                    </p>
 
+                    <p>
+                        There is also something I've wanted
+                        to tell you for a long time,
+                        but I kept getting confused about
+                        whether I should say it.
+                    </p>
 
-            <p>
-                And there's something I wanted to explain
-                to you about the hospital.
-            </p>
+                    <p>
+                        I was worried you'd misunderstand me
+                        and think I'm trying to be some
+                        Romeo-type guy or that there's some
+                        hidden expectation behind all this.
+                    </p>
 
+                    <p class="important">
 
-            <p>
-                I really wanted to come and see you.
-                I was genuinely sad knowing you were there
-                and that I wasn't coming to see you.
-            </p>
+                        There isn't.
 
+                        <br><br>
 
-            <p>
-                The truth is, I have a really bad fear
-                of hospitals. I've actually fainted
-                in a hospital before back in India,
-                and ever since then I've struggled
-                with going inside them.
-            </p>
+                        I genuinely love you
+                        as my friend. 💛
 
+                    </p>
 
-            <p>
-                I'm sorry I couldn't be there.
-                It wasn't because I didn't care —
-                actually, it was the complete opposite.
-            </p>
+                    <p>
+                        When I'm around you,
+                        I feel comfortable in a way
+                        that's difficult for me to explain.
+                    </p>
 
+                    <p>
+                        I feel like I'm around family.
+                    </p>
 
-            <p>
-                There's also something I've wanted
-                to tell you for a long time,
-                but I kept stopping myself because
-                I was worried you might misunderstand me.
-            </p>
+                    <p>
+                        I feel like I can talk to you,
+                        share things with you,
+                        be stupid with you,
+                        and just be myself.
+                    </p>
 
+                    <p>
+                        And that's why you've become
+                        so special to me.
+                    </p>
 
-            <p>
-                I didn't want you thinking I was trying
-                to be some Romeo-type guy or that
-                I was expecting something from you.
-            </p>
+                    <p>
+                        So when I tell you
+                        that I love you,
+                        I mean that I genuinely care
+                        about you as a person.
+                    </p>
 
+                    <p>
+                        I value you.
+                        I value our friendship.
+                        And I'm genuinely grateful
+                        you're in my life.
+                    </p>
 
-            <p class="important">
-                I'm not.
-                <br><br>
-                I genuinely love you as my friend. 💛
-            </p>
+                    <p>
+                        I don't need anything
+                        from you in return.
+                    </p>
 
+                    <p>
+                        I just wanted you to finally know
+                        what you've meant to me
+                        all this time.
+                    </p>
 
-            <p>
-                When I'm around you,
-                there's this comfort I can't really explain.
-                I feel like I'm around family.
-            </p>
+                    <p>
+                        And this is 100% true —
+                        you're the first girl,
+                        actually the first person
+                        in my life,
+                        that I've ever bought flowers for.
+                    </p>
 
+                    <p class="important">
 
-            <p>
-                I can talk to you,
-                share things with you,
-                and just be myself.
-            </p>
+                        So just imagine
+                        how special you had to be
+                        for me to do that. 🌷
 
+                    </p>
 
-            <p>
-                So when I say I love you,
-                that's what I mean.
-            </p>
+                    <p>
+                        I don't know where life will take us
+                        or what things will look like
+                        years from now.
+                    </p>
 
+                    <p>
+                        But I do know one thing:
+                        I'll always be happy
+                        that I met you.
+                    </p>
 
-            <p>
-                I care about you deeply,
-                I value you,
-                and I'm genuinely grateful
-                that you're part of my life.
-            </p>
+                    <p class="important">
 
+                        You'll always have
+                        your little spot in my heart,
+                        bestiee. 💛
 
-            <p>
-                I don't need anything from you in return.
-                I just wanted you to finally know
-                how much you mean to me.
-            </p>
+                    </p>
 
+                    <div class="final-heart">
+                        🌷 💛
+                    </div>
 
-            <p>
-                And this is 100% true —
-                you're the first girl,
-                actually the first person in my life,
-                that I've ever bought flowers for.
-            </p>
+                </div>
 
+            `;
 
-            <p class="important">
-                So just imagine how special
-                you had to be for me to do that. 🌷
-            </p>
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-
-            <p>
-                Whatever happens in life,
-                I'm just really happy that I met you.
-            </p>
-
-
-            <div class="final-heart">
-                🌷 💛
-            </div>
-
-
-        </div>
-
-    `;
+        },
+        900
+    );
 
 });
 
-
 </script>
 
-
 </body>
-
 </html>
