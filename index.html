@@ -2,227 +2,237 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just For You 💛</title>
 
-    <title>Just For You 💛</title>
+<style>
 
-    <style>
+* {
+    box-sizing: border-box;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
 
-        body {
-            margin: 0;
-            min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    background: linear-gradient(
+        135deg,
+        #fff4d6,
+        #ffe4ee
+    );
 
-            padding: 20px;
+    color: #302630;
+}
 
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
+.card {
+    width: 100%;
+    max-width: 650px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #fff4d6,
-                    #ffe4ee
-                );
+    background: rgba(255,255,255,0.96);
 
-            overflow-x: hidden;
-        }
+    padding: 45px 35px;
 
+    border-radius: 30px;
 
-        .card {
-            width: 100%;
-            max-width: 620px;
+    text-align: center;
 
-            background:
-                rgba(255, 255, 255, 0.95);
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.12);
+}
 
-            padding: 45px 30px;
+.flower {
+    font-size: 60px;
 
-            border-radius: 30px;
+    animation:
+        float 2s
+        ease-in-out
+        infinite;
+}
 
-            text-align: center;
+.small {
+    color: #999;
 
-            box-shadow:
-                0 20px 60px
-                rgba(0, 0, 0, 0.12);
-        }
+    font-size: 12px;
 
+    letter-spacing: 3px;
 
-        .flower {
-            font-size: 60px;
+    text-transform: uppercase;
 
-            animation:
-                float 2s
-                ease-in-out
-                infinite;
-        }
+    margin-top: 15px;
+}
 
+h1 {
+    font-size: 40px;
 
-        .small {
-            color: #999;
+    line-height: 1.2;
 
-            font-size: 12px;
+    margin: 15px 0 25px;
+}
 
-            letter-spacing: 3px;
+.message {
+    font-size: 18px;
 
-            text-transform: uppercase;
+    line-height: 1.8;
 
-            margin-top: 15px;
-        }
+    color: #665866;
+}
 
+.question {
+    margin-top: 32px;
 
-        h1 {
-            font-size: 40px;
+    font-size: 21px;
 
-            line-height: 1.15;
+    font-weight: 700;
+}
 
-            margin:
-                15px 0
-                22px;
-        }
+.buttons {
+    min-height: 170px;
 
+    margin-top: 20px;
 
-        .message {
-            font-size: 18px;
+    display: flex;
 
-            line-height: 1.7;
+    justify-content: center;
 
-            color: #665866;
-        }
+    align-items: center;
 
+    gap: 18px;
 
-        .question {
-            margin-top: 32px;
+    flex-wrap: wrap;
+}
 
-            font-size: 21px;
+button {
+    border: none;
 
-            font-weight: 700;
-        }
+    border-radius: 50px;
 
+    padding: 15px 30px;
 
-        .buttons {
-            min-height: 170px;
+    font-size: 18px;
 
-            margin-top: 20px;
+    font-weight: bold;
 
-            display: flex;
+    cursor: pointer;
 
-            justify-content: center;
+    transition:
+        transform 0.25s ease;
+}
 
-            align-items: center;
+#yes {
+    background: #ffd34e;
 
-            gap: 18px;
+    color: #352900;
 
-            flex-wrap: wrap;
-        }
+    box-shadow:
+        0 8px 25px
+        rgba(255,200,40,0.4);
 
+    position: relative;
 
-        button {
-            border: none;
+    z-index: 2;
+}
 
-            border-radius: 50px;
+#no {
+    background: #eeeeee;
 
-            padding:
-                15px 30px;
+    color: #555;
+}
 
-            font-size: 18px;
+#reaction {
+    min-height: 35px;
 
-            font-weight: bold;
+    margin-top: 15px;
 
-            cursor: pointer;
+    font-size: 17px;
 
-            transition:
-                transform 0.25s ease,
-                padding 0.25s ease,
-                font-size 0.25s ease;
-        }
+    font-weight: 700;
 
+    color: #885f70;
+}
 
-        #yes {
-            background: #ffd34e;
+.final-message {
+    text-align: left;
 
-            color: #352900;
+    max-width: 560px;
 
-            box-shadow:
-                0 8px 25px
-                rgba(255, 200, 40, 0.4);
+    margin: 0 auto;
 
-            position: relative;
+    font-size: 17px;
 
-            z-index: 2;
-        }
+    line-height: 1.9;
 
+    color: #665866;
+}
 
-        #no {
-            background: #eeeeee;
+.final-message p {
+    margin-bottom: 22px;
+}
 
-            color: #555;
-        }
+.final-message .important {
+    text-align: center;
 
+    font-size: 20px;
 
-        #reaction {
-            min-height: 35px;
+    color: #3e313a;
 
-            margin-top: 15px;
+    font-weight: 600;
 
-            font-size: 17px;
+    margin: 30px 0;
+}
 
-            font-weight: 700;
+.final-heart {
+    text-align: center;
 
-            color: #885f70;
-        }
+    font-size: 35px;
 
+    margin-top: 30px;
+}
 
-        @keyframes float {
 
-            0%,
-            100% {
-                transform:
-                    translateY(0);
-            }
+@keyframes float {
 
-            50% {
-                transform:
-                    translateY(-10px);
-            }
+    0%, 100% {
+        transform: translateY(0);
+    }
 
-        }
+    50% {
+        transform: translateY(-10px);
+    }
 
+}
 
-        @media (max-width: 600px) {
 
-            .card {
-                padding:
-                    35px 20px;
-            }
+@media (max-width: 600px) {
 
-            h1 {
-                font-size: 31px;
-            }
+    .card {
+        padding: 35px 22px;
+    }
 
-            .message {
-                font-size: 17px;
-            }
+    h1 {
+        font-size: 31px;
+    }
 
-            .question {
-                font-size: 19px;
-            }
+    .message {
+        font-size: 17px;
+    }
 
-        }
+    .final-message {
+        font-size: 16px;
+    }
 
-    </style>
+}
+
+</style>
 
 </head>
 
@@ -260,37 +270,21 @@
 
         <br><br>
 
-        I value our friendship and
-        I love having you in my life.
-
-        <br><br>
-
         Somewhere along the way,
         without even realising it,
-        you became someone who
-        means a lot to me.
+        you became someone who means
+        a lot to me.
 
         <br><br>
 
         Whatever happens,
         wherever life takes us,
-        and no matter how much
-        things change...
+        and no matter how much things change...
 
         <br><br>
 
-        you've got a little place
-        in my heart that will
-        always be yours. 💛
-
-        <br><br>
-
-        Nothing complicated.
-        Nothing expected from you.
-
-        <br><br>
-
-        I just wanted you to know that.
+        you've got a little place in my heart
+        that will always be yours. 💛
 
     </p>
 
@@ -307,16 +301,12 @@
 
 
         <button id="yes">
-
             Yes 💛
-
         </button>
 
 
         <button id="no">
-
             No
-
         </button>
 
 
@@ -373,156 +363,241 @@ const messages = [
 
 
 
-no.addEventListener(
-    "click",
-    function () {
+no.addEventListener("click", function () {
+
+    count++;
 
 
-        count++;
+    let size =
+        1 + (count * 0.30);
 
 
-        let size =
-            1 + (count * 0.30);
+    if (size > 3.5) {
 
-
-        if (size > 3.5) {
-
-            size = 3.5;
-
-        }
-
-
-        yes.style.transform =
-            "scale(" + size + ")";
-
-
-        let messageNumber =
-            Math.min(
-                count - 1,
-                messages.length - 1
-            );
-
-
-        reaction.innerText =
-            messages[messageNumber];
-
-
-        if (count === 3) {
-
-            no.innerText =
-                "Are you sure? 🥲";
-
-        }
-
-
-        if (count === 5) {
-
-            no.innerText =
-                "Still No? 🥺";
-
-        }
-
-
-        if (count >= 7) {
-
-            no.innerText =
-                "One last chance 💛";
-
-        }
+        size = 3.5;
 
     }
-);
+
+
+    yes.style.transform =
+        "scale(" + size + ")";
+
+
+    let messageNumber =
+        Math.min(
+            count - 1,
+            messages.length - 1
+        );
+
+
+    reaction.innerText =
+        messages[messageNumber];
+
+
+    if (count === 3) {
+
+        no.innerText =
+            "Are you sure? 🥲";
+
+    }
+
+
+    if (count === 5) {
+
+        no.innerText =
+            "Still No? 🥺";
+
+    }
+
+
+    if (count >= 7) {
+
+        no.innerText =
+            "One last chance 💛";
+
+    }
+
+});
 
 
 
-yes.addEventListener(
-    "click",
-    function () {
+yes.addEventListener("click", function () {
 
 
-        card.innerHTML = `
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 
-            <div class="flower">
+    card.innerHTML = `
 
-                💛
 
+        <div class="flower">
+            💛
+        </div>
+
+
+        <p class="small">
+            OFFICIALLY CONFIRMED
+        </p>
+
+
+        <h1>
+            I knew you'd say yes, baby girl 💛
+        </h1>
+
+
+        <div class="final-message">
+
+
+            <p>
+                That's all I wanted you to know.
+            </p>
+
+
+            <p>
+                I honestly don't know what you think
+                about me or how you see me,
+                but I want you to know that
+                you're genuinely very special to me.
+            </p>
+
+
+            <p>
+                I just like you so much as a person.
+                Please don't take that in the wrong way.
+                Having you in my life sometimes feels
+                like I found something really rare —
+                the kind of friendship and connection
+                you don't come across very often.
+            </p>
+
+
+            <p>
+                I genuinely care about you.
+                That's why I'm always checking on you
+                and wondering if you're okay,
+                even if I don't always say it.
+            </p>
+
+
+            <p>
+                And there's something I wanted to explain
+                to you about the hospital.
+            </p>
+
+
+            <p>
+                I really wanted to come and see you.
+                I was genuinely sad knowing you were there
+                and that I wasn't coming to see you.
+            </p>
+
+
+            <p>
+                The truth is, I have a really bad fear
+                of hospitals. I've actually fainted
+                in a hospital before back in India,
+                and ever since then I've struggled
+                with going inside them.
+            </p>
+
+
+            <p>
+                I'm sorry I couldn't be there.
+                It wasn't because I didn't care —
+                actually, it was the complete opposite.
+            </p>
+
+
+            <p>
+                There's also something I've wanted
+                to tell you for a long time,
+                but I kept stopping myself because
+                I was worried you might misunderstand me.
+            </p>
+
+
+            <p>
+                I didn't want you thinking I was trying
+                to be some Romeo-type guy or that
+                I was expecting something from you.
+            </p>
+
+
+            <p class="important">
+                I'm not.
+                <br><br>
+                I genuinely love you as my friend. 💛
+            </p>
+
+
+            <p>
+                When I'm around you,
+                there's this comfort I can't really explain.
+                I feel like I'm around family.
+            </p>
+
+
+            <p>
+                I can talk to you,
+                share things with you,
+                and just be myself.
+            </p>
+
+
+            <p>
+                So when I say I love you,
+                that's what I mean.
+            </p>
+
+
+            <p>
+                I care about you deeply,
+                I value you,
+                and I'm genuinely grateful
+                that you're part of my life.
+            </p>
+
+
+            <p>
+                I don't need anything from you in return.
+                I just wanted you to finally know
+                how much you mean to me.
+            </p>
+
+
+            <p>
+                And this is 100% true —
+                you're the first girl,
+                actually the first person in my life,
+                that I've ever bought flowers for.
+            </p>
+
+
+            <p class="important">
+                So just imagine how special
+                you had to be for me to do that. 🌷
+            </p>
+
+
+            <p>
+                Whatever happens in life,
+                I'm just really happy that I met you.
+            </p>
+
+
+            <div class="final-heart">
+                🌷 💛
             </div>
 
 
-            <p class="small">
+        </div>
 
-                OFFICIALLY CONFIRMED
+    `;
 
-            </p>
-
-
-            <h1>
-
-                I knew you'd say yes,
-                baby girl 💛
-
-            </h1>
-
-
-            <p class="message">
-
-
-                That's all I wanted
-                you to know.
-
-                <br><br>
-
-
-                I'm genuinely grateful
-                that you're in my life.
-
-                <br><br>
-
-
-                I don't know where
-                life will take either of us,
-
-                <br><br>
-
-                but you'll always be
-                someone I'm happy I met.
-
-                <br><br>
-
-
-                No expectations.
-
-                <br>
-
-                No pressure.
-
-                <br><br>
-
-
-                Just a little reminder
-                that you mean something
-                to me.
-
-                <br><br>
-
-
-                Your little place
-                in my heart is
-                officially permanent.
-
-                <br><br>
-
-                🌷💛
-
-
-            </p>
-
-
-        `;
-
-    }
-);
+});
 
 
 </script>
